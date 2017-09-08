@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-log-fun.css">
+    <script src="jquery-3.2.1.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <title>Login Function</title>
+</head>
+
+<body>
+    <div class="container">
+  
+  <!-- Show menu when "logged in" -->
+  <header class="app-controls">
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a href="#" data-icon="&#xf011;" data-tooltip="Nothing here: try the Log out link >">DNA</a>
+        </li>
+        <li>
+          <a href="#" data-icon="&#xf01c;" data-tooltip="Nothing here: try the Log out link >">Tasks</a>
+        </li>
+        <li>
+          <a href="#" data-icon="&#xf0e4;" data-tooltip="Nothing here: try the Log out link >">Dashboard</a>
+        </li>
+        <li>
+          <a href="#" data-icon="&#xf15b;" data-tooltip="Nothing here: try the Log out link >">DocLab</a>
+        </li>
+        <li>
+          <a href="#" data-icon="&#xf085;" data-tooltip="Nothing here: try the Log out link >">Workflow</a>
+        </li>
+        <li>
+          <a href="#" data-icon="&#xf08b;" class="log-out">Log out</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Reset Success message -->
+  <div class="flex-centered success-msg">
+    <h3>Thank you!</h3>
+    <p>We have sent an email to the address that you submitted, with instructions on how to reset your password.</p>
+    <p>Of course, if you have suddenly remembered your login details, you can <a href="#" class="reset-login-pane">try logging in again</a>.
+  </div>
+  <!-- End Reset Success Message -->
+  
+  <!-- Login Pane -->
+  <div class="flex-centered login-pane">
+    <!-- Front face (login) -->
+    <div class="inner-wrap front-face">
+      <h1>Login to DNA</h1>
+      <form>
+        <fieldset>
+          <legend>Login to DNA</legend>
+          <div class="row">
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" placeholder="e.g. john.smith" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" placeholder="At least 6 characters" />
+            </div>
+          </div>
+        </fieldset>
+        <div class="row">
+          <div class="form-group">
+            <button type="submit" class="submit-credentials" data-icon="&#xf090;">Login</button>
+            <a href="#" class="forgot flip-pane">Forgot password?</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- Back face (reset) -->
+    <div class="inner-wrap back-face">
+      <h2>Reset my password</h2>
+      <form>
+        <div class="row">
+          <div class="form-group">
+            <p>Please submit the email address that you registered with, and we will send you a reset password link.</p>
+          </div>
+        </div>
+        <fieldset>
+          <legend>Email address</legend>
+          <div class="row">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="e.g. john@smith.com" />
+            </div>
+          </div>
+        </fieldset>
+        <div class="row">
+          <div class="form-group">
+            <button type="submit" class="submit-email" data-icon="&#xf138;">Submit</button>
+            <a href="#" class="flip-pane" data-icon="&#xf00d;">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- End Login Pane -->
+  
+  <footer class="welcome-msg">
+    <h1>Welcome to DNA</h1>
+  </footer>
+  
+</div>
+
+<script type="text/javascript">
+    /*$(function() {
+  $('body').css('height',window.innerHeight);
+});
+
+$(window).resize(function() {
+  $('body').css('height',window.innerHeight);
+});*/
+
+$('.submit-credentials').on('click', function(ev) {
+  ev.preventDefault();
+  $(this).closest('.container').toggleClass('logged-in');
+});
+
+$('.log-out').on('click', function(ev) {
+  ev.preventDefault();
+  $(this).closest('.container').removeClass('logged-in');
+});
+
+$('.flip-pane').on('click', function(ev) {
+  ev.preventDefault();
+  $(this).closest('.container').toggleClass('flip');
+});
+
+$('.submit-email').on('click', function(ev) {
+  ev.preventDefault();
+  $(this).closest('.container').addClass('zoom');
+});
+
+$('.reset-login-pane').on('click', function(ev) {
+  ev.preventDefault();
+ $(this).closest('.container').removeClass('zoom').removeClass('flip');
+});
+    </script>
+</body>
+</html>
